@@ -124,7 +124,7 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": "data.csv",
-						"container": "input1"
+						"container": "input"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
