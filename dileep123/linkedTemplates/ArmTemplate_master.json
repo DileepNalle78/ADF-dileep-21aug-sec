@@ -1,0 +1,77 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "dileep123"
+		},
+		"input_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'input'"
+		},
+		"input1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'input1'"
+		},
+		"output_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'output'"
+		},
+		"input_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://storagedileep01.dfs.core.windows.net/"
+		},
+		"output_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://storagedileep02.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "dileep123_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"input_accountKey": {
+						"value": "[parameters('input_accountKey')]"
+					},
+					"input1_connectionString": {
+						"value": "[parameters('input1_connectionString')]"
+					},
+					"output_accountKey": {
+						"value": "[parameters('output_accountKey')]"
+					},
+					"input_properties_typeProperties_url": {
+						"value": "[parameters('input_properties_typeProperties_url')]"
+					},
+					"output_properties_typeProperties_url": {
+						"value": "[parameters('output_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
