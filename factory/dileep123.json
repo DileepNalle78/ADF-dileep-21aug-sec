@@ -1,0 +1,9 @@
+{
+	"name": "dileep123",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "68b70538-c888-4b0b-b8b1-4c91f2a43fbf",
+		"tenantId": "38d6d9fb-c85b-479a-a64a-3657ea5facb3"
+	}
+}
